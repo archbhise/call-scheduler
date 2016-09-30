@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Getting started: 30 seconds to call-scheduler
 
-* Ruby version
+The core data structure of this project is the 'DailySurvey'. Feel free to get setup by running the commands below after setting up your basic rails project.
 
-* System dependencies
+```ruby
+rake db:migrate
+```
 
-* Configuration
+Next, assign your environment variables. The 3 most important ones that are needed before you start are given below.
 
-* Database creation
+```ruby
+ENV['OWNER_NAME']="Archit"
+ENV['PHONE_NUMBER']="1111111111"
+ENV['SCALE_API_ID']="Your API ID"
+```
+All 3 are needed to successfully make the post call to Scale API which schedules the phone call. You can obtain your Scale API ID here: scaleapi.com.
 
-* Database initialization
+The easiest way to schedule a phone call is by creating a DailySurvey object:
+```ruby
+DailySurvey.create(:survey_date=>Date.yesterday)
+```
+To get this project setup for yourself, I recommend adding a few more columns as you see fit and then modifying the 'DailySurvey' model .
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+I've also added a rake task under 'lib/tasks/scheduler.rb' that can allow the Heroku Scheduler to run it every day or week as you see fit.
