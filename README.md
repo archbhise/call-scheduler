@@ -1,5 +1,8 @@
 # README
 
+## Purpose
+
+The purpose of this Rails app is very simple. It runs on Heroku and uses the Scale API. Given a defined set of attributes in your DailySurvey model and your API call, it stores them in the database attached.
 
 ## Getting started: 30 seconds to call-scheduler
 
