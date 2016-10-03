@@ -3,6 +3,7 @@ class DailySurvey < ApplicationRecord
   validates :survey_date, presence: true
   before_create :create_task
 
+  #Called before a task is created, sends a request to the Scale API
   def create_task
 
     #Assign url
@@ -49,7 +50,7 @@ class DailySurvey < ApplicationRecord
     
   end
 
-  #Parse callback from Scale on the survey
+  #Parse callback from Scale on the survey and assign response to a model
   def parse_response(response)
 
     if response["outcome"]=="success"
